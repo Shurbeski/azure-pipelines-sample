@@ -11,13 +11,16 @@ jobs:
     vmImage: 'ubuntu-latest'
 
   steps:
-  - task: Build
-    displayName: 'Build app1'
-    script: echo Building application 1
+  - script: echo WebApp1
+    displayName: 'Build'
 
-  - task: Test
+  - script: |
+      echo Test App 1
+      echo Build Number
+      echo '$(Build.BuildNumber)'
+      echo See https://aka.ms/yaml
     displayName: 'Test'
-    scriot: echo Testing the code app1
+    
 
 - job: WebApp2
   displayName: 'Build WebApp2'
@@ -25,10 +28,13 @@ jobs:
     vmImage: 'ubuntu-latest'
 
   steps:
-  - task: Build
-    displayName: 'Build app2'
-    script: echo Building application 2
+  - script: echo WebApp2
+    displayName: 'Build WebApp2'
 
-  - task: Test
+  - script: |
+      echo Test WebApp2
+      echo Build Number
+      echo '$(Build.BuildNumber)'
+      echo See https://aka.ms/yaml
     displayName: 'Test'
-    scriot: echo Testing the code app2
+    
