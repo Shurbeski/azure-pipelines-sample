@@ -10,35 +10,25 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo I am job 1
-  displayName: 'Run a one-line script'
+  steps:
+  - task: Build
+    displayName: 'Build app1'
+    script: echo Building application 1
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo Build Number
-    echo '$(Build.BuildNumber)'
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-  
-- script: npm install terraform -y
-  displayName: 'Install terraform'
+  - task: Test
+    displayName: 'Test'
+    scriot: echo Testing the code app1
 
-job: WebApp2
+- job: WebApp2
   displayName: 'Build WebApp2'
   pool:
     vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo I am job 2
-  displayName: 'Run a one-line script'
+  steps:
+  - task: Build
+    displayName: 'Build app2'
+    script: echo Building application 2
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo Build Number
-    echo '$(Build.BuildNumber)'
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-  
-- script: npm install terraform -y
-  displayName: 'Install terraform'
+  - task: Test
+    displayName: 'Test'
+    scriot: echo Testing the code app2
