@@ -10,65 +10,36 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
 
-  steps:
-  - task: UseDotNet@2
-    displayName: 'Use .NET 3.1.x'
-    inputs:
-      packageType: 'sdk'
-      version: '3.1.x'
+steps:
+- script: echo I am job 1
+  displayName: 'Run a one-line script'
 
-  - task: DotNetCoreCLI@2
-    displayName: 'Build'
-    inputs:
-      command: 'build'
-      projects: '**/WebApp1.csproj'
-      arguments: '--configuration $(buildConfiguration)' 
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo Build Number
+    echo '$(Build.BuildNumber)'
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
   
-  - task: DotNetCoreCLI@2
-    displayName: 'Publish Application'
-    inputs:
-      command: 'publish'
-      publishWebProjects: false
-      projects: '**/WebApp1.csproj'
-      arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-
-  - task: PublishPipelineArtifact@1
-    displayName: 'Publish Artifacts'
-    inputs:
-      targetPath: '$(Build.ArtifactStagingDirectory)'
-      artifact: 'WebApp1'
-      publishLocation: 'pipeline'
+- script: npm install terraform -y
+  displayName: 'Install terraform'
 
 - job: WebApp2
-  displayName: 'Build WebApp2'
+ - job: WebApp1
+  displayName: 'Build WebApp1'
   pool:
     vmImage: 'ubuntu-latest'
 
-  steps:
-  - task: UseDotNet@2
-    displayName: 'Use .NET 3.1.x'
-    inputs:
-      packageType: 'sdk'
-      version: '3.1.x'
+steps:
+- script: echo I am job 2
+  displayName: 'Run a one-line script'
 
-  - task: DotNetCoreCLI@2
-    displayName: 'Build'
-    inputs:
-      command: 'build'
-      projects: '**/WebApp2.csproj'
-      arguments: '--configuration $(buildConfiguration)' 
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo Build Number
+    echo '$(Build.BuildNumber)'
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
   
-  - task: DotNetCoreCLI@2
-    displayName: 'Publish Application'
-    inputs:
-      command: 'publish'
-      publishWebProjects: false
-      projects: '**/WebApp2.csproj'
-      arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-
-  - task: PublishPipelineArtifact@1
-    displayName: 'Publish Artifacts'
-    inputs:
-      targetPath: '$(Build.ArtifactStagingDirectory)'
-      artifact: 'WebApp2'
-      publishLocation: 'pipeline'
+- script: npm install terraform -y
+  displayName: 'Install terraform'
