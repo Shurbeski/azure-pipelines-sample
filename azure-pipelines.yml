@@ -20,6 +20,5 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
   
-steps:
 - script: npm install terraform -y
   displayName: 'Install terraform'
