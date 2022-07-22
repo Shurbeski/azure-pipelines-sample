@@ -1,0 +1,22 @@
+# this pipeline has one implicit stage
+jobs:
+- job: A
+  steps:
+  - bash: echo "A"
+
+- job: B
+  steps:
+  - bash: echo "B"
+  
+  stages:
+  - stage: A
+    pool: StageAPool
+    jobs:
+    - job: A1
+    - job: A2
+      pool: JobPool
+
+- stage: B
+    jobs:
+    - job: B1
+    - job: B2
