@@ -2,11 +2,9 @@ name: 1.0$(Rev:.r)
 # simplified trigger (implied branch)
 trigger:
   - master
-# equivalent trigger
-# trigger:
-#branches:
-#include:
-#- master
+# YAML file in the main branch
+#schedules:
+#- cron: "0 0 * * *"
 variables:
   name: martin
 pool:
