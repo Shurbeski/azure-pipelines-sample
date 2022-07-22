@@ -10,6 +10,16 @@ trigger:
 #- main
 #- releases/*
 
+#trigger:
+#  branches:
+#    exclude:
+#    - master
+
+#trigger:
+# branches:
+#   include:
+#   - master
+
 variables:
   name: martin
 pool:
