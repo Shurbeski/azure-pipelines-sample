@@ -1,0 +1,10 @@
+resources:
+repositories:
+- repository: appcode
+type: git
+name: otherRepo
+steps:
+- checkout: appcode
+
+#To reference code in another repo, specify that repo in the resources section and then reference it via its
+#alias in the checkout step
