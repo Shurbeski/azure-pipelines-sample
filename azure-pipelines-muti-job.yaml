@@ -1,6 +1,6 @@
 trigger:
 - multiple-jobs
-
+#trigger
 variables:
   buildConfiguration: 'Release'
 
@@ -37,4 +37,5 @@ jobs:
       echo '$(Build.BuildNumber)'
       echo See https://aka.ms/yaml
     displayName: 'Test'
+    
     
