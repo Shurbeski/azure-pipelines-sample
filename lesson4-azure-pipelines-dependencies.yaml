@@ -1,0 +1,48 @@
+jobs:
+- job: A
+  steps:
+  # steps omitted for brevity
+- job: B
+  steps:
+  # steps omitted for brevity
+#Because no dependsOn was specified, the jobs will run sequentially: first A and then B.
+
+#To have both jobs run in parallel, we just add dependsOn: none to job B:
+jobs:
+- job: A
+  steps:
+  # steps omitted for brevity
+- job: B
+  dependsOn: none
+  steps:
+  # steps omitted for brevity
+
+#fan out and fan in
+jobs:
+- job: A
+steps:
+- script: echo 'job A'
+
+- job: B
+  dependsOn: A
+  steps:
+  - script: echo 'job B'
+
+- job: C
+  dependsOn: A
+  steps:
+  - script: echo 'job C'
+
+- job: D
+  dependsOn:
+  - B
+  - C
+  steps:
+  - script: echo 'job D'
+
+- job: E
+  dependsOn:
+  - B
+  - D
+  steps:
+  - script: echo 'job E'

@@ -1,0 +1,40 @@
+trigger:
+- multiple-jobs
+
+variables:
+  buildConfiguration: 'Release'
+
+jobs:
+- job: WebApp1
+  displayName: 'Build WebApp1'
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  steps:
+  - script: echo WebApp1
+    displayName: 'Build'
+
+  - script: |
+      echo Test App 1
+      echo Build Number
+      echo '$(Build.BuildNumber)'
+      echo See https://aka.ms/yaml
+    displayName: 'Test'
+    
+
+- job: WebApp2
+  displayName: 'Build WebApp2'
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  steps:
+  - script: echo WebApp2
+    displayName: 'Build WebApp2'
+
+  - script: |
+      echo Test WebApp2
+      echo Build Number
+      echo '$(Build.BuildNumber)'
+      echo See https://aka.ms/yaml
+    displayName: 'Test'
+    
